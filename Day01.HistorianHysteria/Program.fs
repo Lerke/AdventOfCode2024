@@ -6,6 +6,7 @@ match Environment.GetCommandLineArgs() with
     match File.Exists(file) with
     | true ->
         printfn "--- Day 01: Historian Hysteria ---"
+
         let input =
             File.ReadAllLines file
             |> Seq.filter (fun f -> String.IsNullOrWhiteSpace(f) = false)
@@ -16,12 +17,9 @@ match Environment.GetCommandLineArgs() with
         let differences =
             input
             |> fun f -> (f |> snd |> List.sort) |> List.zip (f |> fst |> List.sort)
-            |> List.map (fun (p, q) ->
-                {| ValueOne = q
-                   ValueTwo = p
-                   Difference = (p - q) |> abs |})
+            |> List.map (fun (p, q) -> (p - q) |> abs)
 
-        let totalDistance = differences |> List.sumBy _.Difference
+        let totalDistance = differences |> List.sumBy id
         printfn $"⭐\tTotal Distance:\t\t%A{totalDistance}"
 
         let occurenceCount =
