@@ -1,8 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day01.HistorianHysteria", "Day01.HistorianHysteria\Day01.HistorianHysteria.fsproj", "{30AA61E4-4528-413F-B59D-50A647CD4983}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{30AA61E4-4528-413F-B59D-50A647CD4983}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30AA61E4-4528-413F-B59D-50A647CD4983}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30AA61E4-4528-413F-B59D-50A647CD4983}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30AA61E4-4528-413F-B59D-50A647CD4983}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
