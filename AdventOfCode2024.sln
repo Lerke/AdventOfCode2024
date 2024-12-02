@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day01.HistorianHysteria", "Day01.HistorianHysteria\Day01.HistorianHysteria.fsproj", "{30AA61E4-4528-413F-B59D-50A647CD4983}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day02.RedNosedReports", "Day02.RedNosedReports\Day02.RedNosedReports.fsproj", "{4C8DAE82-C9BF-4F20-B48D-89A0ADEC27CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{30AA61E4-4528-413F-B59D-50A647CD4983}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30AA61E4-4528-413F-B59D-50A647CD4983}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30AA61E4-4528-413F-B59D-50A647CD4983}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C8DAE82-C9BF-4F20-B48D-89A0ADEC27CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C8DAE82-C9BF-4F20-B48D-89A0ADEC27CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C8DAE82-C9BF-4F20-B48D-89A0ADEC27CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C8DAE82-C9BF-4F20-B48D-89A0ADEC27CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
