@@ -1,14 +1,35 @@
 ﻿open System
 open System.IO
 
-type Report(levels: int array) =
+type Dampening =
+    | Dampened
+    | Undampened
+
+type Report(levels: int list) =
     member val Levels = levels
 
-    member this.IsSafe() =
-        let steps = levels |> Seq.pairwise |> Seq.map (fun (a, b) -> a - b)
+    member this.IsSafe(dampened: Dampening) =
+        let steps l =
+            l |> Seq.pairwise |> Seq.map (fun (a, b) -> b - a)
 
-        (steps |> Seq.forall (fun f -> f > 0) || steps |> Seq.forall (fun f -> f < 0))
-        && (steps |> Seq.forall (fun f -> (f |> abs) >= 1 && (f |> abs) <= 3))
+        let safe x =
+            (x |> Seq.forall (fun f -> f > 0) || x |> Seq.forall (fun f -> f < 0))
+            && (x |> Seq.forall (fun f -> (f |> abs) >= 1 && (f |> abs) <= 3))
+
+        let except i a =
+            a |> Seq.skip (i + 1) |> Seq.append (a |> Seq.take i)
+
+        match (this.Levels |> steps |> safe) with
+        | true -> true
+        | false ->
+            match dampened with
+            | Undampened -> false
+            | Dampened ->
+                levels
+                |> Seq.indexed
+                |> Seq.map (fun (i, _) -> levels |> (except i))
+                |> Seq.map (fun f -> f |> steps |> safe)
+                |> Seq.contains true
 
 
 match Environment.GetCommandLineArgs() with
@@ -21,14 +42,11 @@ match Environment.GetCommandLineArgs() with
             File.ReadAllLines file
             |> Seq.filter (fun f -> String.IsNullOrWhiteSpace(f) = false)
             |> Seq.map _.Split(" ")
-            |> Seq.map (fun f -> f |> Array.map Int32.Parse)
+            |> Seq.map (fun f -> f |> Array.map Int32.Parse |> Array.toList)
             |> Seq.map Report
-            
-        let safeReports =
-            input
-            |> Seq.filter(_.IsSafe())
 
-        printfn $"⭐\tSafe Reports:\t\t%A{safeReports |> Seq.length}"
+        printfn $"⭐\tSafe Reports:\t\t\t%A{(input |> Seq.filter _.IsSafe(Undampened)) |> Seq.length}"
+        printfn $"⭐⭐\tSafe Reports (Dampened):\t%A{(input |> Seq.filter _.IsSafe(Dampened)) |> Seq.length}"
         0
     | false -> failwithf "File not found"
 | _ -> failwithf "Usage: ./dotnet run <path-to-puzzle-input>"
