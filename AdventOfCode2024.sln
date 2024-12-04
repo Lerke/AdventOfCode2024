@@ -6,6 +6,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day02.RedNosedReports", "Da
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day03.MullItOver", "Day03.MullItOver\Day03.MullItOver.fsproj", "{BCBC39FC-F362-4325-B590-113A129221B4}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day04.CeresSearch", "Day04.CeresSearch\Day04.CeresSearch.fsproj", "{9FD7480D-2960-4B5C-9E83-80AC2160EAE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{BCBC39FC-F362-4325-B590-113A129221B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCBC39FC-F362-4325-B590-113A129221B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCBC39FC-F362-4325-B590-113A129221B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FD7480D-2960-4B5C-9E83-80AC2160EAE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FD7480D-2960-4B5C-9E83-80AC2160EAE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FD7480D-2960-4B5C-9E83-80AC2160EAE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FD7480D-2960-4B5C-9E83-80AC2160EAE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
