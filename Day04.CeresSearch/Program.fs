@@ -58,7 +58,7 @@ match Environment.GetCommandLineArgs() with
         let resultTwo = board.XDashMasInBoard >> Seq.length
 
         printfn $"⭐\tResult:\t%A{resultOne ()}"
-        printfn $"⭐\tResult:\t%A{resultTwo ()}"
+        printfn $"⭐⭐\tResult:\t%A{resultTwo ()}"
         0
     | false -> failwithf "File not found"
 | _ -> failwithf "Usage: ./dotnet run <path-to-puzzle-input>"

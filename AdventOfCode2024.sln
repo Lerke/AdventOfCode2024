@@ -8,6 +8,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day03.MullItOver", "Day03.M
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day04.CeresSearch", "Day04.CeresSearch\Day04.CeresSearch.fsproj", "{9FD7480D-2960-4B5C-9E83-80AC2160EAE3}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day05.PrintQueue", "Day05.PrintQueue\Day05.PrintQueue.fsproj", "{7AFC16AF-5575-456C-A0B2-29AC6DDD190A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{9FD7480D-2960-4B5C-9E83-80AC2160EAE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FD7480D-2960-4B5C-9E83-80AC2160EAE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FD7480D-2960-4B5C-9E83-80AC2160EAE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AFC16AF-5575-456C-A0B2-29AC6DDD190A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AFC16AF-5575-456C-A0B2-29AC6DDD190A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AFC16AF-5575-456C-A0B2-29AC6DDD190A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AFC16AF-5575-456C-A0B2-29AC6DDD190A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
