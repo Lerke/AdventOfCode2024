@@ -30,11 +30,11 @@ let NextDirection direction =
     | South -> (0, 1)
     | West -> (-1, 0)
 
-let (+>>) (position: Position) (direction: Direction) =
-    ((position |> fst) + ((NextDirection direction) |> fst)), ((position |> snd) + ((NextDirection direction) |> snd))
+let (+>>) ((px, py): Position) (direction: Direction) =
+    (NextDirection direction)
+    |> fun (nextX, nextY) -> (px + nextX), (py + nextY)
 
-let (+>) (pos1: Position) (pos2: Position) =
-    ((pos1 |> fst) + (pos2 |> fst)), ((pos1 |> snd) + (pos2 |> snd))
+let (+>) ((p1x, p1y): Position) ((p2x, p2y): Position) = (p1x + p2x), (p1y + p2y)
 
 type Map(Board, Guard) =
     member val Board: MapElement array array = Board
