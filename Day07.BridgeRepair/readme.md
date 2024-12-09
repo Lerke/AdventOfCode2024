@@ -2,5 +2,5 @@
 $ dotnet run ./puzzle-input.txt
 --- Day 07: Bridge Repair ---
 ⭐     Result: 3749
-⭐⭐   Result: ?
+⭐⭐   Result: 11387
 ```

@@ -10,4 +10,4 @@ My own solutions to the Advent of Code 2024 problems.
 | 4   | :star2: :star2: | [Day04.CeresSearch](https://github.com/Lerke/AdventOfCode2024/blob/main/Day04.CeresSearch)             |
 | 5   | :star2:         | [Day05.PrintQueue](https://github.com/Lerke/AdventOfCode2024/blob/main/Day05.PrintQueue)               |
 | 6   | :star2: :star2: | [Day06.GuardGallivant](https://github.com/Lerke/AdventOfCode2024/blob/main/Day06.GuardGallivant)       |
-| 7   | :star2:         | [Day07.BridgeRepair](https://github.com/Lerke/AdventOfCode2024/blob/main/Day07.BridgeRepair)           |
+| 7   | :star2: :star2: | [Day07.BridgeRepair](https://github.com/Lerke/AdventOfCode2024/blob/main/Day07.BridgeRepair)           |
