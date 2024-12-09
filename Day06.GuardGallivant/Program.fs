@@ -135,7 +135,7 @@ match Environment.GetCommandLineArgs() with
 | [| _; file |] ->
     match File.Exists(file) with
     | true ->
-        printfn "--- Day 05: Print Queue ---"
+        printfn "--- Day 06: Guard Gallivant ---"
         let input = File.ReadAllLines file
         let board = Map(input)
         let positions = CalculateUntilGuardLeaves board

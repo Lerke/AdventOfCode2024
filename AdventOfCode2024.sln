@@ -12,6 +12,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day05.PrintQueue", "Day05.P
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day06.GuardGallivant", "Day06.GuardGallivant\Day06.GuardGallivant.fsproj", "{96F78BBC-473A-45AF-AC8C-60C2E6D9B90D}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day07.BridgeRepair", "Day07.BridgeRepair\Day07.BridgeRepair.fsproj", "{EBEC8823-C888-41C4-9EBD-7988F89B0008}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{96F78BBC-473A-45AF-AC8C-60C2E6D9B90D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96F78BBC-473A-45AF-AC8C-60C2E6D9B90D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96F78BBC-473A-45AF-AC8C-60C2E6D9B90D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBEC8823-C888-41C4-9EBD-7988F89B0008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBEC8823-C888-41C4-9EBD-7988F89B0008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBEC8823-C888-41C4-9EBD-7988F89B0008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBEC8823-C888-41C4-9EBD-7988F89B0008}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
