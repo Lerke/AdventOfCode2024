@@ -1,11 +1,17 @@
 ﻿open System
 open System.IO
+open Microsoft.FSharp.Core
 
 type BlockEntry = { Id: int }
 
 type DiskItem =
     | Entry of BlockEntry
     | Free
+
+type BlockRange =
+    { First: BlockEntry
+      Index: int
+      Length: int }
 
 let ParseInput (line: string) =
     seq {
@@ -29,6 +35,20 @@ let ParseInput (line: string) =
             | _ -> failwith "Unsupported chunk"
     }
 
+let BlockMap (input: DiskItem array) =
+    input
+    |> Array.indexed
+    |> Array.filter (fun f -> (f |> snd).IsEntry)
+    |> Array.map (fun f ->
+        match (f |> snd) with
+        | Entry e -> (f |> fst, e)
+        | _ -> failwith "Unsupported grouping")
+    |> Array.groupBy (fun f -> (f |> snd).Id)
+    |> Array.map (fun (idx, f) ->
+        { First = (f[0] |> snd)
+          Index = (f |> Seq.map fst |> Seq.min)
+          Length = f.Length })
+
 let Compact (array: DiskItem array) =
     let rec _Compact array startIdx endIdx =
         match (startIdx >= endIdx) with
@@ -48,13 +68,19 @@ let Compact (array: DiskItem array) =
 
     _Compact (array |> Array.map id) 0 (array.Length - 1)
 
+let CompactBlocks (array: DiskItem array) (blocks: BlockRange array) =
+    let rec _CompactBlocks array startIdx endIdx =
+        
+    0
+
 match Environment.GetCommandLineArgs() with
 | [| _; file |] ->
     match File.Exists(file) with
     | true ->
         printfn "--- Day 09: Disk Fragmenter ---"
         let input = File.ReadAllText file
-        let compacted = ParseInput input |> Seq.toArray |> Compact
+        let parsed = ParseInput input |> Seq.toArray
+        let compacted = parsed |> Compact
 
         let oneStar =
             compacted
@@ -66,8 +92,10 @@ match Environment.GetCommandLineArgs() with
                        | Entry entry -> (entry.Id |> int64) * (idx |> int64)
                        | Free -> 0L))
                 0L
+                
+        let blockMap = BlockMap parsed
 
-        let twoStar = '?'
+        let twoStar = blockMap
         printfn $"⭐\tResult:\t%A{oneStar}"
         printfn $"⭐⭐\tResult:\t%A{twoStar}"
         0
