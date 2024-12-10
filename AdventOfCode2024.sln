@@ -16,6 +16,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day07.BridgeRepair", "Day07
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day08.ResonantCollinearity", "Day08.ResonantCollinearity\Day08.ResonantCollinearity.fsproj", "{0E707662-FC04-4561-83BA-9756AE3A3DE1}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day09.DiskFragmenter", "Day09.DiskFragmenter\Day09.DiskFragmenter.fsproj", "{4301304F-9DB7-4A0D-88EE-490C08480FCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,5 +56,9 @@ Global
 		{0E707662-FC04-4561-83BA-9756AE3A3DE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E707662-FC04-4561-83BA-9756AE3A3DE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E707662-FC04-4561-83BA-9756AE3A3DE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4301304F-9DB7-4A0D-88EE-490C08480FCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4301304F-9DB7-4A0D-88EE-490C08480FCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4301304F-9DB7-4A0D-88EE-490C08480FCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4301304F-9DB7-4A0D-88EE-490C08480FCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
