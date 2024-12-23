@@ -68,10 +68,36 @@ let Compact (array: DiskItem array) =
 
     _Compact (array |> Array.map id) 0 (array.Length - 1)
 
-let CompactBlocks (array: DiskItem array) (blocks: BlockRange array) =
-    let rec _CompactBlocks array startIdx endIdx =
-        
-    0
+let rec CompactBlocks (array: DiskItem array) (blocks: BlockRange array) =
+    let b =
+        blocks
+        |> Seq.rev
+        |> Seq.map (fun bb ->
+            let fIndex =
+                array
+                |> Array.indexed
+                |> Array.tryFindIndex (fun (i, f) ->
+                    f.IsFree
+                    && i < bb.Index
+                    && (seq { i .. (i + bb.Length - 1) }
+                        |> Seq.forall (fun b -> array.Length > b && array[b].IsFree)))
+
+            match fIndex with
+            | Some _ -> (true, Some fIndex, Some bb)
+            | None -> (false, None, None))
+        |> Seq.tryFind (fun (r, _, _) -> r)
+
+    match b with
+    | Some(_, fIndex, bb) ->
+        let mutable ix = 0
+
+        for i in seq { fIndex.Value.Value .. (fIndex.Value.Value + (bb.Value.Length - 1)) } do
+            array[i] <- array[bb.Value.Index + ix]
+            array[bb.Value.Index + ix] <- Free
+            ix <- ix + 1
+
+        CompactBlocks array (blocks |> (Array.take (Array.IndexOf(blocks, bb.Value))))
+    | None -> array
 
 match Environment.GetCommandLineArgs() with
 | [| _; file |] ->
@@ -92,10 +118,21 @@ match Environment.GetCommandLineArgs() with
                        | Entry entry -> (entry.Id |> int64) * (idx |> int64)
                        | Free -> 0L))
                 0L
-                
-        let blockMap = BlockMap parsed
 
-        let twoStar = blockMap
+        let blockMap = BlockMap parsed
+        let parsed = ParseInput input |> Seq.toArray
+
+        let twoStar =
+            CompactBlocks parsed blockMap
+            |> Array.indexed
+            |> Array.fold
+                (fun acc (idx, curr) ->
+                    acc
+                    + (match curr with
+                       | Entry entry -> (entry.Id |> int64) * (idx |> int64)
+                       | Free -> 0L))
+                0L
+
         printfn $"⭐\tResult:\t%A{oneStar}"
         printfn $"⭐⭐\tResult:\t%A{twoStar}"
         0
