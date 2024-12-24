@@ -20,6 +20,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day09.DiskFragmenter", "Day
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day10.HoofIt", "Day10.HoofIt\Day10.HoofIt.fsproj", "{DE6E1252-D793-4329-81DC-6E576F09AE2D}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Day11.PlutonianPebbles", "Day11.PlutonianPebbles\Day11.PlutonianPebbles.fsproj", "{B5CB7C0A-ABB8-483C-8FF6-2E505C9C4FDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,5 +68,9 @@ Global
 		{DE6E1252-D793-4329-81DC-6E576F09AE2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE6E1252-D793-4329-81DC-6E576F09AE2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE6E1252-D793-4329-81DC-6E576F09AE2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5CB7C0A-ABB8-483C-8FF6-2E505C9C4FDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5CB7C0A-ABB8-483C-8FF6-2E505C9C4FDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5CB7C0A-ABB8-483C-8FF6-2E505C9C4FDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5CB7C0A-ABB8-483C-8FF6-2E505C9C4FDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
