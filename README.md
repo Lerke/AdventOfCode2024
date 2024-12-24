@@ -13,4 +13,4 @@ My own solutions to the Advent of Code 2024 problems.
 | 7   | :star2: :star2: | [Day07.BridgeRepair](https://github.com/Lerke/AdventOfCode2024/blob/main/Day07.BridgeRepair)                 |
 | 8   | :star2: :star2: | [Day08.ResonantCollinearity](https://github.com/Lerke/AdventOfCode2024/blob/main/Day08.ResonantCollinearity) |
 | 9   | :star2: :star2: | [Day09.DiskFragmenter](https://github.com/Lerke/AdventOfCode2024/blob/main/Day09.DiskFragmenter)             |
-| 10  | :star2:         | [Day10.HoofIt](https://github.com/Lerke/AdventOfCode2024/blob/main/Day10.HoofIt)                             |
+| 10  | :star2: :star2: | [Day10.HoofIt](https://github.com/Lerke/AdventOfCode2024/blob/main/Day10.HoofIt)                             |

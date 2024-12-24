@@ -4,10 +4,14 @@ open System.IO
 type Node = { X: int; Y: int; Value: int }
 type Edge = (int * int) * (int * int)
 
+type Mode =
+    | Score
+    | Rating
+
 let Trailheads nodes =
     nodes |> Seq.filter (fun f -> f.Value = 0)
 
-let Traverse (trailhead: Node) (nodes: Node list) (edges: Edge list) =
+let Traverse (trailhead: Node) (nodes: Node list) (edges: Edge list) mode =
     let rec _traverse (trailhead: Node) (nodes: Node list) (edges: Edge list) (traversed: Node list) =
         match trailhead with
         | th when th.Value = 9 -> [ th ]
@@ -27,10 +31,14 @@ let Traverse (trailhead: Node) (nodes: Node list) (edges: Edge list) =
                 |> List.map (fun f -> _traverse f nodes edges (traversed @ [ f ]))
                 |> List.collect id
 
-    (match _traverse trailhead nodes edges [] with
-     | x when (x |> List.last).Value = 9 -> x
-     | _ -> [])
-    |> List.distinctBy (fun f -> f.X, f.Y)
+    let results =
+        (match _traverse trailhead nodes edges [] with
+         | x when (x |> List.last).Value = 9 -> x
+         | _ -> [])
+
+    match mode with
+    | Score -> results |> List.distinctBy (fun f -> f.X, f.Y)
+    | Rating -> results
 
 
 match Environment.GetCommandLineArgs() with
@@ -72,8 +80,13 @@ match Environment.GetCommandLineArgs() with
 
 
         let ths = Trailheads nodes
-        let oneStar = ths |> Seq.map (fun f -> Traverse f nodes edges) |> Seq.sumBy _.Length
-        let twoStar = 2
+
+        let oneStar =
+            ths |> Seq.map (fun f -> Traverse f nodes edges Score) |> Seq.sumBy _.Length
+
+        let twoStar =
+            ths |> Seq.map (fun f -> Traverse f nodes edges Rating) |> Seq.sumBy _.Length
+
         printfn $"⭐\tResult:\t%A{oneStar}"
         printfn $"⭐⭐\tResult:\t%A{twoStar}"
         0
