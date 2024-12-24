@@ -40,7 +40,7 @@ match Environment.GetCommandLineArgs() with
         let input = (File.ReadAllText file).Split(" ") |> Seq.map Int32.Parse |> Seq.toArray
 
         memo.Clear()
-        let oneStar = input |> Array.Parallel.map (fun f -> ApplyRules f 25) |> Array.sum
+        let oneStar = input |> Array.map (fun f -> ApplyRules f 25) |> Array.sum
 
         memo.Clear()
         let twoStar = input |> Array.map (fun f -> ApplyRules f 75) |> Array.sum
