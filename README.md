@@ -14,4 +14,4 @@ My own solutions to the Advent of Code 2024 problems.
 | 8   | :star2: :star2: | [Day08.ResonantCollinearity](https://github.com/Lerke/AdventOfCode2024/blob/main/Day08.ResonantCollinearity) |
 | 9   | :star2: :star2: | [Day09.DiskFragmenter](https://github.com/Lerke/AdventOfCode2024/blob/main/Day09.DiskFragmenter)             |
 | 10  | :star2: :star2: | [Day10.HoofIt](https://github.com/Lerke/AdventOfCode2024/blob/main/Day10.HoofIt)                             |
-| 11  | :star2:         | [Day11.PlutonianPebbles](https://github.com/Lerke/AdventOfCode2024/blob/main/Day11.PlutonianPebbles)         |
+| 11  | :star2: :star2: | [Day11.PlutonianPebbles](https://github.com/Lerke/AdventOfCode2024/blob/main/Day11.PlutonianPebbles)         |
