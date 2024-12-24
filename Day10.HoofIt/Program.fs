@@ -4,16 +4,34 @@ open System.IO
 type Node = { X: int; Y: int; Value: int }
 type Edge = (int * int) * (int * int)
 
-let Trailheads nodes (edges: Edge list) =
+let Trailheads nodes =
     nodes |> Seq.filter (fun f -> f.Value = 0)
-    
-let rec Traverse (trailhead: Node) (nodes: Node list) (edges: Edge list) =
-    match (edges |> List.filter (fun ((x1,y1), (x2, y2)) -> x1 = trailhead.X && y1 = trailhead.Y)) with
-    | [] -> failwithf ""
-    | xs ->
-        let n = nodes |> List.filter (fun f -> (xs |> List.tryFind (fun (_, (px, py)) -> px = f.X && py = f.Y)).IsSome)
-        n |> List.map Traverse
-    
+
+let Traverse (trailhead: Node) (nodes: Node list) (edges: Edge list) =
+    let rec _traverse (trailhead: Node) (nodes: Node list) (edges: Edge list) (traversed: Node list) =
+        match trailhead with
+        | th when th.Value = 9 -> [ th ]
+        | _ ->
+            match
+                (edges
+                 |> List.filter (fun ((x1, y1), (_, _)) -> x1 = trailhead.X && y1 = trailhead.Y))
+            with
+            | [] -> []
+            | xs ->
+                let n =
+                    nodes
+                    |> List.filter (fun f -> (xs |> List.tryFind (fun (_, (px, py)) -> px = f.X && py = f.Y)).IsSome)
+
+                n
+                |> List.where (fun f -> (traversed |> List.contains f) = false)
+                |> List.map (fun f -> _traverse f nodes edges (traversed @ [ f ]))
+                |> List.collect id
+
+    (match _traverse trailhead nodes edges [] with
+     | x when (x |> List.last).Value = 9 -> x
+     | _ -> [])
+    |> List.distinctBy (fun f -> f.X, f.Y)
+
 
 match Environment.GetCommandLineArgs() with
 | [| _; file |] ->
@@ -27,14 +45,14 @@ match Environment.GetCommandLineArgs() with
             |> Seq.map (fun f -> f |> Seq.map (fun f -> Int32.Parse(f.ToString())) |> Seq.indexed |> Seq.toArray)
             |> Seq.indexed
             |> Seq.collect (fun (y, z) -> (z |> Array.map (fun (x, v) -> (x, y, v))))
-            |> Seq.toArray
+            |> Seq.toList
 
 
-        let nodes = arrayInput |> Array.map (fun (x, y, v) -> { X = x; Y = y; Value = v })
+        let nodes = arrayInput |> List.map (fun (x, y, v) -> { X = x; Y = y; Value = v })
 
         let edges =
             arrayInput
-            |> Array.map (fun (x, y, z) ->
+            |> List.map (fun (x, y, z) ->
                 (x,
                  y,
                  (seq {
@@ -45,16 +63,19 @@ match Environment.GetCommandLineArgs() with
                   }
                   |> Seq.map (fun (xx, yy) ->
                       (arrayInput
-                       |> Array.tryFind (fun (px, py, pv) -> xx = px && yy = py && (z + 1) = pv)))
+                       |> List.tryFind (fun (px, py, pv) -> xx = px && yy = py && (z + 1) = pv)))
                   |> Seq.filter _.IsSome
                   |> Seq.map _.Value
-                  |> Seq.toArray)))
-            |> Array.collect (fun (x,y,v) -> v |> Array.map(fun (xx, yy, _) -> (x,y,xx,yy)))
+                  |> Seq.toList)))
+            |> Seq.toList
+            |> List.collect (fun (x, y, v) -> v |> List.map (fun (xx, yy, _) -> (x, y), (xx, yy)))
 
-        let oneStar = 1
+
+        let ths = Trailheads nodes
+        let oneStar = ths |> Seq.map (fun f -> Traverse f nodes edges) |> Seq.sumBy _.Length
         let twoStar = 2
-        printfn $"⭐\tResult:\t%A{arrayInput}"
-        printfn $"⭐⭐\tResult:\t%A{edges}"
+        printfn $"⭐\tResult:\t%A{oneStar}"
+        printfn $"⭐⭐\tResult:\t%A{twoStar}"
         0
     | false -> failwithf "File not found"
 | _ -> failwithf "Usage: ./dotnet run <path-to-puzzle-input>"
